@@ -1,0 +1,111 @@
+{% extends 'layout2.html' %}
+{% block body %}
+    <div>
+    <p>
+        <h3>
+
+
+        <b>Your Groups</b>
+         </h3>
+    </p>
+ <table class="table table-bordered">
+<thead>
+<tr>
+    <th> Group Name</th>
+
+    <th>
+        Quit Groups
+    </th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in data %}
+    <tr>
+        <td>{{ r["group_name"] }}</a></td>
+ <td><form method="post" action="/quit_group">
+        <button name="quit_group" type="submit"  value="{{  r['group_name'] }}">Quit</button>
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+        </div>
+    <div>
+    <P>
+        <h3>
+        <b>Select a new group to join</b>
+    </h3>
+    </P>
+<form method="post" action="/join_group">
+    <select name="name">
+    {% for row in rows %}
+    <option value= "{{row.name}}" >{{ row.name }}</option>"
+
+    {% endfor %}
+
+</select>
+<button type="submit">Join</button>
+
+</form>
+    </div>
+    <div>
+
+    <h1>
+        Create a group
+    </h1>
+    <form action="/create_group" method="post">
+        <label>Group Name</label>
+        <input type="text" name="name">
+
+        <button type="submit">Create</button>
+
+    </form>
+    </div>
+
+    <div>
+    <h1>
+        Upload to a group
+    </h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+<p>Select Group to which you want to upload
+            <select name="name">
+    {% for r in data %}
+    <option value= "{{r.group_name}}" >{{ r.group_name }}</option>"
+
+    {% endfor %}
+
+</select>
+</p>
+<p>Select image to upload:</p>
+    <input type="file" name="image" id="image">
+
+<p>
+<p>
+    Decription
+    <input type="text" name="description" id="description" >
+    <input type="submit" value="Upload" name="insert" id="insert">
+</p>
+</form>
+    </div>
+    <div>
+    <h1>
+        Download from a group
+    </h1>
+
+<form action="/download" method="post" enctype="multipart/form-data">
+<p>Select Group from which you want to download
+            <select name="name">
+    {% for r in data %}
+    <option value= "{{r.group_name}}" >{{ r.group_name }}</option>"
+
+    {% endfor %}
+
+</select>
+<button type="submit">Go</button>
+
+</form>
+    </div>
+{% endblock %}

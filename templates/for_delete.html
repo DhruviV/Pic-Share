@@ -1,0 +1,52 @@
+{% extends 'layout2.html' %}
+
+{% block body %}
+
+<div>
+    <table class="table table-bordered">
+<thead>
+<tr>
+    <th> Group Name</th>
+    <th>URL for Download</th>
+    <th>
+        Description
+    </th>
+    <th>
+        Date Uploaded
+    </th>
+    <th>
+        Time Uploaded
+    </th>
+    <th>Delete</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in data %}
+    <tr>
+        <td>{{ r["group_name"] }}</a></td>
+        <td><a href="{{ r["url"] }}">{{r["url"] }}</a></td>
+        <td>{{ r["description"] }}
+
+        </td>
+        <td>
+            {{ r["date"] }}
+        </td>
+        <td>
+            {{ r["time"] }}
+        </td>
+         <td><form method="post" action="/delete_file">
+        <button name="delete_file" type="submit"  value="{{ r['id'] }}">Delete</button>
+
+    </form>
+</td>
+
+
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+</div>
+
+{% endblock %}

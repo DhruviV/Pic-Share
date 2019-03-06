@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="jumbotron text-center">
+
+{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+       <h1>Sign Up</h1>
+        <form class="form-register" method="post" action="/signup">
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" name="name"  class="form-control" placeholder="name" required autofocus>
+        <label for="username" class="sr-only">User Name</label>
+        <input type="email" name="username"  class="form-control" placeholder="Email address" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" name="password"  class="form-control" placeholder="password" required>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
+      </form>
+      </div>
+
+
+{% endblock %}

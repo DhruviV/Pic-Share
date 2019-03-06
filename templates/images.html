@@ -1,0 +1,36 @@
+{% extends 'layout2.html' %}
+{% block body %}
+<div>
+    <p>
+        <h3>
+
+
+        <b>Your Groups</b>
+         </h3>
+    </p>
+ <table class="table table-bordered">
+<thead>
+<tr>
+    <th> Group Name</th>
+    <th>URL for Download</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in data %}
+    <tr>
+        <td>{{ r["group_name"] }}</a></td>
+        <td><a href="{{ r["url"] }}">{{r["url"] }}</a></td>
+
+
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'layout2.html' %}
+
+{% block body %}
+<h1>Users not Enabled</h1>
+<table class="table table-bordered">
+<thead>
+<tr>
+   <th>User Name</th>
+    <th>User ID</th>
+    <th>Access</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in data %}
+    <tr>
+
+        <td>{{ r["name"] }}</td>
+
+     <td>{{ r["username"] }} </td>
+
+    <td><form method="post" action="/add">
+        <button name="add" type="submit"  value="{{  r['username'] }}">Enable</button>
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+<div>
+<h1>Enabled Users</h1>
+<table class="table table-bordered">
+<thead>
+<tr>
+   <th>User Name</th>
+    <th>User ID</th>
+    <th>Access</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in rows %}
+    <tr>
+
+        <td>{{ r["name"] }}</td>
+
+     <td>{{ r["username"] }} </td>
+     <td><form method="post" action="/delete_member">
+        <button name="delete" type="submit"  value="{{  r['username'] }}">Disable</button>
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+</div>
+    <div>
+    <h1>Groups to be Approved</h1>
+    <table class="table table-bordered">
+<thead>
+<tr>
+   <th>Group Name</th>
+<th>Group Requestor</th>
+    <th>Approved</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in result %}
+    <tr>
+
+        <td>{{ r["name"] }}</td>
+        <td>{{ r["username"] }}</td>
+
+
+     <td><form method="post" action="/add_group">
+        <button name="add_group" type="submit"  value="{{  r['name'] }}">Approve</button>
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+    </div>
+    <div>
+    <h1>Groups Approved</h1>
+    <table class="table table-bordered">
+<thead>
+<tr>
+   <th>Group Name</th>
+<th>Group Creator</th>
+    <th>Approved</th>
+</tr>
+</thead>
+    <tbody>
+    {% for r in new_result %}
+    <tr>
+
+        <td>{{ r["name"] }}</td>
+        <td>{{ r["username"] }}</td>
+
+
+     <td><form method="post" action="/delete_group">
+        <button name="delete_group" type="submit"  value="{{  r['name'] }}">Delete</button>
+    </form>
+</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    </table>
+    </div>
+<div>
+<form action="/for_delete" method="post">
+<p>Select Group to which you want to delete file
+            <select name="name">
+    {% for r in new_result %}
+    <option value= "{{r.name}}" >{{ r.name }}</option>"
+
+    {% endfor %}
+
+</select>
+<button type="submit">Go</button>
+</p>
+</form>
+</div>
+
+
+
+
+{% endblock %}

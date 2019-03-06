@@ -1,0 +1,2 @@
+https://nunie123.github.io/sqlalchemy-validation.html
+https://stackoverflow.com/questions/2990654/how-to-test-a-regex-password-in-python

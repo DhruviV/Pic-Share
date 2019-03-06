@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="jumbotron text-center">
+
+
+       <h1>Log In </h1>
+        <form class="form-register" method="post" action="/access_granted">
+
+        <label for="username" class="sr-only">User Name</label>
+        <input type="email" name="username"  class="form-control" value="" placeholder="Email address" required autofocus>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" name="password"  class="form-control" value="" placeholder="password" required>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="LOG IN">
+      </form>
+      </div>
+
+
+{% endblock %}
